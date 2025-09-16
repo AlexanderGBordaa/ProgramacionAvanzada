@@ -1,27 +1,25 @@
-import getData from '../utils/getData';
+// src/pages/Home.js
+import api from '../utils/getData.js';
+import launchCard from '../templates/card.js';
 
-const Home = async () => {
-  const data = await getData();
-  console.log(data);
+export async function renderHome(container) {
+  container.innerHTML = '<h1>Lanzamientos SpaceX</h1><div class="grid" id="launch-grid"></div>';
+  const grid = container.querySelector('#launch-grid');
 
-  const characters = data?.results || [];
-  
-  const view = `
-  <div class="Characters">
-    ${
-      characters.map(character => `
-        <article class="Characters-card">
-          <a href="#/${character.id}">
-            <img src="${character.image}" alt="${character.name}">
-            <h2>${character.name}</h2>
-          </a>
-        </article>
-      `).join('')
-    }
-  </div>
-  `;
-  
-  return view;
-};
+  const launches = await api.getLaunches();
+  if (!launches || launches.length === 0) {
+    grid.innerHTML = '<p>No se encontraron lanzamientos.</p>';
+    return;
+  }
 
-export default Home;
+  grid.innerHTML = launches.map(launch => launchCard(launch)).join('');
+
+  // click en imagen -> ruta detalle
+  grid.querySelectorAll('.launch-img').forEach(img => {
+    img.addEventListener('click', () => {
+      window.location.hash = `#/launch/${img.dataset.id}`;
+    });
+  });
+}
+
+export default { renderHome };

@@ -1,24 +1,20 @@
-import Header from '../templates/Header';
-import Home from '../pages/Home';
-import Character from '../pages/Character';
-import Error404 from '../pages/Error404';
+// src/routes/index.js
+import { renderHome } from '../pages/Home.js';
+import renderLaunchDetail from '../pages/LaunchDetail.js';
 
+const container = document.getElementById('app');
 
-const routes = {
-    '/': Home,
-    '/:id': Character,
-
+function router() {
+  const hash = window.location.hash || '#/';
+  const launchDetailMatch = hash.match(/^#\/launch\/(.+)/);
+  if (hash === '#/') {
+    renderHome(container);
+  } else if (launchDetailMatch) {
+    renderLaunchDetail(container, launchDetailMatch[1]);
+  } else {
+    container.innerHTML = '<p>Página no encontrada</p>';
+  }
 }
 
-const router = async () => {
-    const header = document.getElementById('header');
-    const content = document.getElementById('content');
-
-    header.innerHTML = await Header();
-
-    const hash = location.hash.slice(1).toLowerCase() || '/';
-    let render = routes[hash] ? routes[hash] : Error404;
-    content.innerHTML = await render();
-}
-
+// export default para que index.js raíz lo importe correctamente
 export default router;

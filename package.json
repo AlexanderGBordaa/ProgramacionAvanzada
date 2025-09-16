@@ -8,10 +8,11 @@
     "start": "webpack serve --mode development --open",
     "dev": "webpack serve --mode development --open"
   },
-  "author": "ernesto ledesma",
+  "author": "ealexander borda",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.22.0",
+    "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression": "^7.27.1",
     "@babel/preset-env": "^7.22.0",
     "babel-loader": "^9.1.0",
     "copy-webpack-plugin": "^11.0.0",
