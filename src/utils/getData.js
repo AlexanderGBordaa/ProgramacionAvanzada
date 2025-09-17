@@ -1,4 +1,3 @@
-// src/utils/api.js
 const BASE = 'https://api.spacexdata.com/v5/launches';
 
 export async function getLaunches() {

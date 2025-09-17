@@ -27,8 +27,8 @@ h1 {
 
 /* Card */
 .card {
-    background: #ffffff;
-    color: #333;
+    background: #3341e050;
+    color: #ede0e0;
     padding: 1rem;
     border-radius: 12px;
     text-align: center;
@@ -38,12 +38,12 @@ h1 {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 20px rgb(255, 0, 0);
 }
 
 /* Imagen en las cards */
 .card img {
-    width: 120px;
+    width: 160px;
     height: auto;
     cursor: pointer;
     border-radius: 8px;
@@ -57,19 +57,100 @@ h1 {
 }
 
 /* Botón volver */
-button#back {
-    margin-bottom: 1rem;
-    cursor: pointer;
-    padding: 0.6rem 1.2rem;
-    background: #1563d7;
+#back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.7rem 1.4rem;
+    background: linear-gradient(135deg, #ff6b6b, #ff8787);
     color: #fff;
+    font-weight: 600;
     border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    transition: background 0.3s ease, transform 0.2s ease;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-button#back:hover {
-    background: #457b9d;
+#back:hover {
+    background: linear-gradient(135deg, #be0e0e, #ff3b3b);
     transform: scale(1.05);
+}
+
+/* Contenedor detalle */
+.detail-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+    background: linear-gradient(145deg, #1a2a4b, #0f1a33);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Tarjeta con imagen */
+.detail-card {
+    background: linear-gradient(135deg, #496c9c, #3a539b);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.detail-card h2 {
+    color: #ffd166;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.detail-card img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.detail-card img:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+}
+
+/* Información al lado */
+.detail-info {
+    background: linear-gradient(135deg, #1b1b2f, #121224);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+.detail-info strong {
+    color: #ff6b6b;
+}
+
+.detail-info ul {
+    padding-left: 1.5rem;
+    list-style-type: square;
+}
+
+.detail-info li {
+    margin-bottom: 0.5rem;
+}
+
+/* Animación fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
